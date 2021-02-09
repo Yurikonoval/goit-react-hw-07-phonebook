@@ -14,7 +14,17 @@ const filter = createReducer('', {
   [filterChange]: (_, { payload }) => payload,
 });
 
+const error = createReducer(null, {
+  [fetchContacts.rejected]: (_, action) => action.payload,
+  [fetchContacts.pending]: () => null,
+  [addContact.rejected]: (_, action) => action.payload,
+  [addContact.pending]: () => null,
+  [deleteContact.rejected]: (_, action) => action.payload,
+  [deleteContact.pending]: () => null,
+});
+
 export default combineReducers({
   items,
   filter,
+  error,
 });
